@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+  background-color: #A8A8A8;
+}
+
+.flexWrapper {
+  display: flex;
+}

@@ -1,0 +1,28 @@
+.taskCreator {
+    padding: 16px;
+    background-color: #A8A8A8;
+    height: 50%;
+}
+
+.inputRow {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputRow input {
+    width: 50%;
+    margin: 16px 0;
+    padding: 8px 4px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.inputRow button {
+    border: 0;
+    padding: 8px 4px;
+    width: 25%;
+    margin: 16px 0;
+    background-color: #FCA311;
+    color: #fff;
+}
+

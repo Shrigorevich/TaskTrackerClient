@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import style from './App.module.css';
+import AdminPanel from './components/AdminPanel/AdminPanel';
+import Header from './components/Header/Header';
+import Layout from './components/Layout/Layout';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export const TaskContext = React.createContext({});
+
+const TaskContextProvider = ({ children }) => {
+    const [state, setState] = useState([]);
+
+    useEffect(() => {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+        const tasks = storedTasks ?? [];
+        setState(tasks);
+    }, []);
+
+    const taskStorage = {
+        tasks: state,
+        addTask: (task) => {
+            const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+            const tasks = storedTasks ?? [];
+            tasks.push(task);
+            console.log('SET STATE: ', tasks);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            setState(tasks);
+        },
+        updateTask: (taskType) => {
+            const dragItem = JSON.parse(localStorage.getItem('dragItem'));
+            const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
+            storedTasks.find((el) => el.id === dragItem.id).status = taskType;
+            localStorage.setItem('tasks', JSON.stringify(storedTasks));
+            setState(storedTasks);
+        },
+    };
+
+    return (
+        <TaskContext.Provider value={taskStorage}>
+            {children}
+        </TaskContext.Provider>
+    );
+};
+
+const App = () => {
+    return (
+        <div className="App">
+            <Header />
+            <div className={style.flexWrapper}>
+                <TaskContextProvider>
+                    <AdminPanel />
+                    <Layout />
+                </TaskContextProvider>
+            </div>
+        </div>
+    );
+};
 
 export default App;
