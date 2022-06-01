@@ -1,24 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import useTaskType from '../../hooks/useTaskType';
 import Column from '../Column/Column';
 import style from './Layout.module.css';
 import { TaskContext } from '../../App';
+import TaskCreator from '../TaskCreator/TaskCreator';
 
-export const Layout = (props) => {
+export const Layout = () => {
     const [taskType] = useTaskType();
     const taskContext = useContext(TaskContext);
     const columns = [
         {
-            name: 'To Do',
+            name: '💪 To Do',
             taskType: taskType.TODO,
         },
         {
-            name: 'In progress',
+            name: '⏳ In Progress',
             taskType: taskType.INPROGRESS,
         },
         {
-            name: 'Done',
+            name: '✅ Done',
             taskType: taskType.DONE,
+        },
+        {
+            name: '❌ Canceled',
+            taskType: taskType.CANCELED,
         },
     ];
 
@@ -37,6 +42,7 @@ export const Layout = (props) => {
 
     return (
         <div className={style.layout}>
+            <TaskCreator />
             {columns.map((item, i) => {
                 return (
                     <Column

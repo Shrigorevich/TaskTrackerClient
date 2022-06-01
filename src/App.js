@@ -22,21 +22,16 @@ const TaskContextProvider = ({ children }) => {
             const tasks = storedTasks ?? [];
             task.sortIndex = tasks.length;
             tasks.push(task);
-            console.log('SET STATE: ', tasks);
             localStorage.setItem('tasks', JSON.stringify(tasks));
             setState(tasks);
         },
         updateTask: (taskType) => {
             const dragItem = JSON.parse(localStorage.getItem('dragItem'));
             const targetIndex = Number(localStorage.getItem('targetIndex'));
-            console.log(targetIndex);
+
             let storedTasks = JSON.parse(localStorage.getItem('tasks'));
 
             const targetTask = storedTasks.find((el) => el.id === dragItem.id);
-            const taskToShift = storedTasks.find(
-                (el) => el.status === taskType && el.sortIndex === targetIndex
-            );
-            if (targetTask.id === taskToShift.id) return;
 
             const minV = Math.min(targetIndex, targetTask.sortIndex);
             const maxV = Math.max(targetIndex, targetTask.sortIndex);
@@ -80,11 +75,11 @@ const TaskContextProvider = ({ children }) => {
 
 const App = () => {
     return (
-        <div className="App">
+        <div className={style.app}>
             <Header />
             <div className={style.flexWrapper}>
                 <TaskContextProvider>
-                    <AdminPanel />
+                    {/* <AdminPanel /> */}
                     <Layout />
                 </TaskContextProvider>
             </div>

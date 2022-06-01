@@ -1,5 +1,15 @@
 .task {
-    background-color: #E7E7E7;
-    padding: 8px;
-    margin: 8px 0;
+  background-color: rgb(43, 94, 94);
+  padding: 12px;
+  margin: 8px 0;
+	color: #e3e3e3;
+	font-size: 14px;
+	border-radius: 4px;
+	line-height: 1.4;
+	cursor: move;
+	transition: all 0.15s ease;
+}
+
+.task:hover {
+  background-color: rgb(38, 89, 89);
 }

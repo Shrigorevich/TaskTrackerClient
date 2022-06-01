@@ -19,7 +19,7 @@ export const Task = (props) => {
             onDragStart={dragStartHandler}
             className={style.task}
         >
-            <h3>{props.task.payload}</h3>
+            <h4>{props.task.payload}</h4>
         </div>
     );
 };
