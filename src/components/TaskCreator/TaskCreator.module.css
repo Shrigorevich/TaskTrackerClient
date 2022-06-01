@@ -1,28 +1,58 @@
 .taskCreator {
-    padding: 16px;
-    background-color: #A8A8A8;
-    height: 50%;
+	flex: 20%;
+}
+
+.taskCreatorBox {
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+}
+
+.taskCreator h3 {
+	margin: 0 0 16px 0;
 }
 
 .inputRow {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+	margin: 0 0 12px;
+	justify-content: flex-end;
 }
 
-.inputRow input {
-    width: 50%;
-    margin: 16px 0;
-    padding: 8px 4px;
-    border-radius: 5px;
-    border: 0;
+.inputRow input,
+.inputRow textarea {
+  width: 100%;
+  border-radius: 4px;
+  border: 0;
+	box-shadow: 0;
+	background-color: #333336;
+	font-family: "Roboto", sans-serif;
+	padding: 8px 12px;
+	line-height: 1.4;
+	font-size: 14px;
+	caret-color: #e3e3e3;
+	color: #e3e3e3;
+	transition: box-shadow 0.15s ease;
+}
+
+.inputRow textarea {
+	resize: vertical;
+}
+
+.inputRow input:focus,
+.inputRow textarea:focus {
+	box-shadow: 0 0 3px #e3e3e3;
 }
 
 .inputRow button {
-    border: 0;
-    padding: 8px 4px;
-    width: 25%;
-    margin: 16px 0;
-    background-color: #FCA311;
-    color: #fff;
+	display: flex;
+  border: 0;
+  padding: 8px 30px 8px 28px;
+  background-color: #5e5e5e;
+	color: #e3e3e3;
+	cursor: pointer;
+	border-radius: 4px;
 }
 
+.inputRow button:active {
+	transform: translateY(1px);
+}

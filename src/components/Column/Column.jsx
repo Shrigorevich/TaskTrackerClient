@@ -4,37 +4,37 @@ import style from './Column.module.css'
 
 export const Column = (props) => {
 
-    const [tasks, setTasks] = useState([]);
+	const [tasks, setTasks] = useState([]);
 
-    useEffect(() => {
-        
-        setTasks(props.tasks)
+	useEffect(() => {
 
-    }, [props.tasks]);
+		setTasks(props.tasks)
 
-    const dragEnterHandler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("Drag enter");
-    }
+	}, [props.tasks]);
 
-    const dragOverHandler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    }
+	const dragEnterHandler = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		console.log("Drag enter");
+	}
 
-    const dropHandler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        props.dropHandler(props.config.taskType);
-    }
+	const dragOverHandler = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+	}
 
-    return (
-        <div onDragEnter={dragEnterHandler} onDrop={dropHandler} onDragOver={dragOverHandler} className={style.column}>
-            <h3>{props.config.name}</h3>
-            {tasks.map((item, i) => <Task key={i} task={item}/>)}
-        </div>
-    )
+	const dropHandler = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		props.dropHandler(props.config.taskType);
+	}
+
+	return <div className={style.column}>
+		<h3>{props.config.name}</h3>
+		<div onDragEnter={dragEnterHandler} onDrop={dropHandler} onDragOver={dragOverHandler} className={style.columnBox}>
+			{tasks.map((item, i) => <Task key={i} task={item} />)}
+		</div>
+	</div>
 }
 
 export default Column

@@ -5,7 +5,7 @@ export const Header = (props) => {
 
     return (
         <div className={style.header}>
-            <h2>COOL TRACKER</h2>
+            <h2>Cool Tracker</h2>
         </div>
     )
 }
