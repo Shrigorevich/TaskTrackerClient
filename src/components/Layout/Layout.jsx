@@ -42,9 +42,9 @@ export const Layout = (props) => {
                     <Column
                         key={i}
                         config={item}
-                        tasks={taskContext.tasks.filter(
-                            (task) => task.status === item.taskType
-                        )}
+                        tasks={taskContext.tasks
+                            .filter((task) => task.status === item.taskType)
+                            .sort((a, b) => a.sortIndex - b.sortIndex)}
                         dropHandler={dropHandler}
                     />
                 );
